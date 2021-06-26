@@ -45,9 +45,14 @@ const MainView = () => {
 
   return (
     <div className="main-view-container">
-      <SearchTitle title="Users list" />
-      <SearchInput onSearch={search} placeholder="Search by user name" type="search" />
-      {users.length !== 0 ? <SearchedUsersList searchedUsers={searchedUsers} /> : <Spinner />}
+      <div className="search-title-box">
+        <SearchTitle title="Users list" />
+      </div>
+      <div className="search-input-box">
+        <SearchInput onSearch={search} placeholder="Search by user name" type="search" />
+      </div>
+      <div className="searched-users-list-box">
+        {users.length !== 0 ? <SearchedUsersList searchedUsers={searchedUsers} /> : <Spinner />}</div>
     </div>
   )
 };
