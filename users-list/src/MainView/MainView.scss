@@ -8,9 +8,11 @@
   border: 1px solid rgb(172, 170, 170);
   input {
     width: 200px;
-    height: 20px;
+    height: 30px;
     outline: none;
     color: rgb(172, 170, 170);
+    margin-bottom: 20px;
+    padding: 5px;
 
     &::placeholder {
       color: rgb(172, 170, 170);
