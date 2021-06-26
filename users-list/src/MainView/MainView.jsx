@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import SearchedUsersList from '../SearchComponents/SearchedUsersList/SearchedusersList';
+import SearchInput from '../SearchComponents/SearchInput/SearchInput';
+import SearchTitle from '../SearchComponents/SearchTitle/SearchTitle';
 import './MainView.scss';
 
 const MainView = () => {
@@ -26,10 +29,8 @@ const MainView = () => {
         );
       });
     }
-
     setcurrentUsers(usersFound);
   };
-
 
   const usersToRender = currentUsers.map((row) => row)
 
@@ -40,20 +41,14 @@ const MainView = () => {
     ) : (
       <p>No results. Please, try again.</p>
     );
+  console.log(search)
   return (
     <div className="main-view-container">
-      <h1>Users list</h1>
-      <input type="search" placeholder="Search by user name" onChange={search} />
-      <ol>
-        {searchedUsers}
-      </ol>
+      <SearchTitle title="Users list" />
+      <SearchInput onSearch={search} placeholder="Search by user name" type="search" />
+      <SearchedUsersList searchedUsers={searchedUsers} />
     </div>
   )
 };
 
 export default MainView;
-
-
-
-
-
