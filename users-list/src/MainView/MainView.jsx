@@ -3,6 +3,7 @@ import SearchedUsersList from '../SearchComponents/SearchedUsersList/Searcheduse
 import SearchInput from '../SearchComponents/SearchInput/SearchInput';
 import SearchTitle from '../SearchComponents/SearchTitle/SearchTitle';
 import './MainView.scss';
+import Spinner from '../Loader/Loader';
 
 const MainView = () => {
   const [users, setusers] = useState([])
@@ -36,17 +37,17 @@ const MainView = () => {
 
   const searchedUsers =
     usersToRender.length > 0 ? (
-      usersToRender.map((userName) => <li><span className="user-name">{userName.name}</span> <span className="user-username">{`@${userName.username}`}</span></li>)
+      usersToRender.map((userName) => <li key={userName.id}><span className="user-name">{userName.name}</span> <span className="user-username">{`@${userName.username}`}</span></li>)
 
     ) : (
       <p>No results. Please, try again.</p>
     );
-  console.log(search)
+
   return (
     <div className="main-view-container">
       <SearchTitle title="Users list" />
       <SearchInput onSearch={search} placeholder="Search by user name" type="search" />
-      <SearchedUsersList searchedUsers={searchedUsers} />
+      {users.length !== 0 ? <SearchedUsersList searchedUsers={searchedUsers} /> : <Spinner />}
     </div>
   )
 };
